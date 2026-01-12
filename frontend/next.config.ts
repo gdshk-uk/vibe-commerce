@@ -10,6 +10,12 @@ const nextConfig: NextConfig = {
   /* Image optimization for Cloudflare Pages */
   images: {
     unoptimized: true, // Cloudflare Images will handle optimization
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'img.clerk.com',
+      },
+    ],
   },
 
   /* Environment variables */
