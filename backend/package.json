@@ -1,0 +1,32 @@
+{
+  "name": "@vibe-commerce/backend",
+  "version": "1.0.0",
+  "description": "Cloudflare Workers API backend for Vibe Commerce",
+  "main": "src/index.ts",
+  "private": true,
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy",
+    "db:generate": "drizzle-kit generate",
+    "db:migrate": "wrangler d1 execute vibe-commerce-db --remote --file=./src/db/migrations/0000_initial.sql",
+    "db:migrate:local": "wrangler d1 execute vibe-commerce-db --local --file=./src/db/migrations/0000_initial.sql",
+    "db:studio": "drizzle-kit studio",
+    "type-check": "tsc --noEmit",
+    "lint": "eslint src --ext .ts"
+  },
+  "dependencies": {
+    "hono": "^4.6.15",
+    "drizzle-orm": "^0.36.4",
+    "@clerk/backend": "^1.17.4"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^4.20241218.0",
+    "drizzle-kit": "^0.29.1",
+    "typescript": "^5.6.3",
+    "wrangler": "^3.96.0",
+    "@types/node": "^22.10.2",
+    "eslint": "^9.17.0",
+    "@typescript-eslint/eslint-plugin": "^8.18.2",
+    "@typescript-eslint/parser": "^8.18.2"
+  }
+}

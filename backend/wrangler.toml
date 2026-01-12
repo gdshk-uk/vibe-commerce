@@ -1,0 +1,22 @@
+name = "vibe-commerce-api"
+main = "src/index.ts"
+compatibility_date = "2024-12-01"
+node_compat = true
+
+# D1 Database Binding
+[[d1_databases]]
+binding = "DB"
+database_name = "vibe-commerce-db"
+database_id = "f2b58f88-d1d8-4ca5-8685-c9c474cc49b2"
+
+# Environment Variables (use .dev.vars for local secrets)
+[vars]
+ENVIRONMENT = "production"
+
+# Development configuration
+[env.development]
+vars = { ENVIRONMENT = "development" }
+
+# Observability
+[observability]
+enabled = true
