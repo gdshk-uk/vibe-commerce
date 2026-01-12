@@ -4,8 +4,8 @@ const nextConfig: NextConfig = {
   /* React Compiler for performance optimization */
   reactCompiler: true,
 
-  /* Cloudflare Pages optimization */
-  output: "standalone",
+  /* No specific output mode - let Next.js handle it */
+  // Cloudflare Pages will use the default build output
 
   /* Image optimization for Cloudflare Pages */
   images: {

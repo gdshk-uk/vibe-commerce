@@ -3,13 +3,13 @@
  * Landing page for Vibe Commerce platform
  */
 
+'use client';
+
 import Link from 'next/link';
-import { auth } from '@clerk/nextjs/server';
+import { useUser } from '@clerk/nextjs';
 
-export const dynamic = 'force-dynamic';
-
-export default async function HomePage() {
-  const { userId } = await auth();
+export default function HomePage() {
+  const { isSignedIn } = useUser();
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
@@ -28,7 +28,7 @@ export default async function HomePage() {
               edge-optimized e-commerce platform built on Cloudflare.
             </p>
             <div className="mt-10 flex justify-center gap-4">
-              {userId ? (
+              {isSignedIn ? (
                 <Link
                   href="/dashboard"
                   className="rounded-lg bg-blue-600 px-8 py-3 text-base font-medium text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
@@ -103,7 +103,7 @@ export default async function HomePage() {
               Join thousands of satisfied customers experiencing the future of
               e-commerce.
             </p>
-            {!userId && (
+            {!isSignedIn && (
               <div className="mt-8">
                 <Link
                   href="/sign-up"
