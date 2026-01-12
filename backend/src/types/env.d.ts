@@ -6,6 +6,9 @@ export interface Env {
   // D1 Database binding
   DB: D1Database;
 
+  // R2 Storage binding
+  ASSETS: R2Bucket;
+
   // Environment variables
   ENVIRONMENT: string;
   CLERK_SECRET_KEY: string;

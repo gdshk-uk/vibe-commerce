@@ -9,6 +9,11 @@ binding = "DB"
 database_name = "vibe-commerce-db"
 database_id = "f2b58f88-d1d8-4ca5-8685-c9c474cc49b2"
 
+# R2 Storage Binding
+[[r2_buckets]]
+binding = "ASSETS"
+bucket_name = "vibe-commerce-assets"
+
 # Environment Variables (use .dev.vars for local secrets)
 [vars]
 ENVIRONMENT = "production"

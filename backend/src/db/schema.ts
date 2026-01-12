@@ -35,15 +35,16 @@ export const products = sqliteTable('products', {
   description: text('description').notNull(),
   price: real('price').notNull(),
   stockQuantity: integer('stock_quantity').notNull().default(0),
+  lowStockThreshold: integer('low_stock_threshold').notNull().default(10),
   imageUrls: text('image_urls', { mode: 'json' })
     .notNull()
     .$type<string[]>()
     .default(sql`'[]'`),
   category: text('category').notNull(),
   brand: text('brand').notNull(),
-  status: text('status', { enum: ['in_stock', 'out_of_stock', 'pre_order'] })
+  status: text('status', { enum: ['active', 'draft', 'archived'] })
     .notNull()
-    .default('in_stock'),
+    .default('active'),
   vectorEmbedding: text('vector_embedding', { mode: 'json' }).$type<number[]>(),
   createdAt: text('created_at')
     .notNull()

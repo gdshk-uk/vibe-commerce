@@ -19,12 +19,31 @@ const isPublicRoute = createRouteMatcher([
 ]);
 
 /**
+ * Define admin routes that require admin role
+ */
+const isAdminRoute = createRouteMatcher(['/admin(.*)']);
+
+/**
  * Clerk middleware configuration
  * Automatically protects all routes except those marked as public
+ * Checks admin role for admin routes
  */
 export default clerkMiddleware(async (auth, request) => {
   // If the route is not public, require authentication
   if (!isPublicRoute(request)) {
+    const session = await auth();
+
+    // Check if route requires admin access
+    if (isAdminRoute(request)) {
+      const role = session.sessionClaims?.publicMetadata?.role;
+
+      // Redirect non-admin users to dashboard
+      if (role !== 'admin') {
+        const url = new URL('/dashboard', request.url);
+        return Response.redirect(url);
+      }
+    }
+
     await auth.protect();
   }
 });
