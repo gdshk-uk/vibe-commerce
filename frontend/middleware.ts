@@ -35,7 +35,8 @@ export default clerkMiddleware(async (auth, request) => {
 
     // Check if route requires admin access
     if (isAdminRoute(request)) {
-      const role = session.sessionClaims?.publicMetadata?.role;
+      const publicMetadata = session.sessionClaims?.publicMetadata as { role?: string } | undefined;
+      const role = publicMetadata?.role;
 
       // Redirect non-admin users to dashboard
       if (role !== 'admin') {
