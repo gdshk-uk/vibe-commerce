@@ -41,5 +41,5 @@ jobs:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           projectName: vibe-commerce
-          directory: frontend/.next
+          directory: frontend/out
           gitHubToken: ${{ secrets.GITHUB_TOKEN }}
