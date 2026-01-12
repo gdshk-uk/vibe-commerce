@@ -4,12 +4,12 @@ const nextConfig: NextConfig = {
   /* React Compiler for performance optimization */
   reactCompiler: true,
 
-  /* No specific output mode - let Next.js handle it */
-  // Cloudflare Pages will use the default build output
+  /* Static export for Cloudflare Pages */
+  output: 'export',
 
   /* Image optimization for Cloudflare Pages */
   images: {
-    unoptimized: true, // Cloudflare Images will handle optimization
+    unoptimized: true, // Required for static export
     remotePatterns: [
       {
         protocol: 'https',
@@ -22,37 +22,6 @@ const nextConfig: NextConfig = {
   env: {
     NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY: process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY,
     NEXT_PUBLIC_API_URL: process.env.NEXT_PUBLIC_API_URL,
-  },
-
-  /* Security headers */
-  async headers() {
-    return [
-      {
-        source: '/:path*',
-        headers: [
-          {
-            key: 'X-DNS-Prefetch-Control',
-            value: 'on',
-          },
-          {
-            key: 'Strict-Transport-Security',
-            value: 'max-age=63072000; includeSubDomains; preload',
-          },
-          {
-            key: 'X-Content-Type-Options',
-            value: 'nosniff',
-          },
-          {
-            key: 'X-Frame-Options',
-            value: 'SAMEORIGIN',
-          },
-          {
-            key: 'Referrer-Policy',
-            value: 'strict-origin-when-cross-origin',
-          },
-        ],
-      },
-    ];
   },
 };
 

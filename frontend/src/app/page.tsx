@@ -6,10 +6,9 @@
 'use client';
 
 import Link from 'next/link';
-import { useUser } from '@clerk/nextjs';
 
 export default function HomePage() {
-  const { isSignedIn } = useUser();
+  const isSignedIn = false; // Placeholder for authentication state
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white">

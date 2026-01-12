@@ -3,7 +3,6 @@
  * Provides navigation and layout for protected dashboard pages
  */
 
-import { UserButton } from '@clerk/nextjs';
 import Link from 'next/link';
 
 export default function DashboardLayout({
@@ -43,13 +42,9 @@ export default function DashboardLayout({
               </div>
             </div>
             <div className="flex items-center">
-              <UserButton
-                appearance={{
-                  elements: {
-                    avatarBox: 'w-10 h-10',
-                  },
-                }}
-              />
+              <div className="flex h-10 w-10 items-center justify-center rounded-full bg-blue-600 text-white font-medium">
+                U
+              </div>
             </div>
           </div>
         </div>
