@@ -149,13 +149,25 @@ npm run build
 
 ### 5. Deploy to Cloudflare Pages
 
-Using Wrangler:
+**Important:** Configure Cloudflare Pages build settings correctly:
 
-```bash
-npm run deploy
+In your Cloudflare Pages project settings:
+
+**Build Configuration:**
+- **Framework preset**: Next.js
+- **Build command**: `cd frontend && npm install && npm run build`
+- **Build output directory**: `frontend/.next`
+- **Root directory**: `/` (keep default)
+
+**Environment Variables:**
+Add these in Cloudflare Pages → Settings → Environment variables:
+```
+NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=your_key_here
+NEXT_PUBLIC_API_URL=https://api.your-domain.com
 ```
 
-Or use the GitHub Actions workflow (recommended).
+**Alternative: Use GitHub Actions** (recommended)
+The workflow in `.github/workflows/deploy-frontend.yml` handles deployment automatically when you push to main.
 
 ## Clerk Authentication Setup
 
