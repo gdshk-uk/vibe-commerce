@@ -20,7 +20,7 @@ export function useTypewriter({
 }: UseTypewriterOptions) {
   const [displayedText, setDisplayedText] = useState('');
   const [isComplete, setIsComplete] = useState(false);
-  const timeoutRef = useRef<NodeJS.Timeout>();
+  const timeoutRef = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
   const indexRef = useRef(0);
 
   useEffect(() => {
