@@ -17,6 +17,8 @@ import usersRoutes from './routes/users';
 import productsRoutes from './routes/products';
 import ordersRoutes from './routes/orders';
 import adminProductsRoutes from './routes/admin/products';
+import aiChatRoutes from './routes/ai/chat';
+import searchRoutes from './routes/search';
 
 // Initialize Hono app with typed environment
 const app = new Hono<{ Bindings: Env }>();
@@ -61,9 +63,13 @@ app.get('/health', (c) => {
 app.route('/api/users', usersRoutes);
 app.route('/api/products', productsRoutes);
 app.route('/api/orders', ordersRoutes);
+app.route('/api/search', searchRoutes);
 
 // Admin routes
 app.route('/api/admin/products', adminProductsRoutes);
+
+// AI routes
+app.route('/api/ai', aiChatRoutes);
 
 // ============================================================
 // 404 Handler

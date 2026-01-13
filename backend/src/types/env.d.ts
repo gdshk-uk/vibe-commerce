@@ -13,5 +13,5 @@ export interface Env {
   ENVIRONMENT: string;
   CLERK_SECRET_KEY: string;
   CLERK_PUBLISHABLE_KEY: string;
-  GEMINI_API_KEY?: string;
+  GEMINI_API_KEY: string;
 }

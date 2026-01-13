@@ -1,9 +1,11 @@
 /**
  * Dashboard Layout
  * Provides navigation and layout for protected dashboard pages
+ * Includes AI-powered search and chat assistant
  */
 
 import Link from 'next/link';
+import { AIChat } from '@/components/ai';
 
 export default function DashboardLayout({
   children,
@@ -39,6 +41,12 @@ export default function DashboardLayout({
                 >
                   Orders
                 </Link>
+                <Link
+                  href="/ai-demo"
+                  className="rounded-md px-3 py-2 text-sm font-medium text-purple-700 hover:bg-purple-100 hover:text-purple-900"
+                >
+                  AI Demo ✨
+                </Link>
               </div>
             </div>
             <div className="flex items-center">
@@ -52,6 +60,9 @@ export default function DashboardLayout({
 
       {/* Main Content */}
       <main>{children}</main>
+
+      {/* AI Chat Assistant (Global) */}
+      <AIChat />
     </div>
   );
 }

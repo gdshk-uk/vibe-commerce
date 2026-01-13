@@ -1,9 +1,11 @@
 /**
  * Dashboard Page (Protected)
- * Accessible only to authenticated users
+ * Accessible only to authenticated users with AI-powered features
  */
 
 'use client';
+
+import { SemanticSearch, ProductRecommendations } from '@/components/ai';
 
 export default function DashboardPage() {
   const user = { firstName: 'User', emailAddresses: [{ emailAddress: 'user@example.com' }], createdAt: new Date() };
@@ -16,6 +18,17 @@ export default function DashboardPage() {
           <p className="mt-2 text-gray-600">
             Welcome back, {user?.firstName || 'User'}!
           </p>
+        </div>
+
+        {/* AI Search */}
+        <div className="mb-8">
+          <h2 className="mb-4 text-xl font-semibold text-gray-900">
+            🔍 Search Products
+          </h2>
+          <SemanticSearch
+            placeholder="Try: 'wireless headphones' or 'fitness tracker'"
+            className="max-w-2xl"
+          />
         </div>
 
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
@@ -38,6 +51,14 @@ export default function DashboardPage() {
             </h3>
             <p className="mt-2 text-3xl font-semibold text-gray-900">$0.00</p>
           </div>
+        </div>
+
+        {/* AI Recommendations */}
+        <div className="mb-8">
+          <ProductRecommendations
+            title="Recommended for You"
+            limit={4}
+          />
         </div>
 
         <div className="mt-8 rounded-lg bg-white p-6 shadow">
